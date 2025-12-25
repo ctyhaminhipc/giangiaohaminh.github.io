@@ -3,8 +3,9 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Giàn giáo Hà Minh-IPC | Scaffold Leasing</title>
-  <meta name="description" content="Giàn giáo Hà Minh-IPC – Cho thuê giàn giáo Ringlock & thép hộp mạ kẽm. Kho bãi lớn, quy trình chuyên nghiệp, dự án thực tế." />
+  <title>Giàn giáo Hà Minh-IPC | Cho thuê giàn giáo Ringlock & thép hộp mạ kẽm</title>
+  <meta name="description" content="Giàn giáo Hà Minh-IPC – Cho thuê giàn giáo Ringlock & thép hộp mạ kẽm. Kho bãi, quy trình, dự án thực tế." />
+  <meta name="theme-color" content="#0b0f14" />
 
   <style>
     :root{
@@ -14,77 +15,106 @@
       --text:#e9eef5;
       --muted:#a9b4c2;
       --line:rgba(255,255,255,.08);
+      --line2:rgba(255,255,255,.13);
+      --shadow: 0 16px 50px rgba(0,0,0,.48);
+      --max: 1180px;
+      --pad: 22px;
       --accent:#4ea1ff;
       --accent2:#7cf0c3;
-      --shadow: 0 14px 40px rgba(0,0,0,.45);
-      --max: 1140px;
-      --pad: 22px;
     }
+
     *{box-sizing:border-box}
     html,body{height:100%}
     body{
       margin:0;
       font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", "Helvetica Neue", sans-serif;
-      background: radial-gradient(1000px 600px at 10% -10%, rgba(78,161,255,.18), transparent 55%),
-                  radial-gradient(900px 600px at 90% 0%, rgba(124,240,195,.12), transparent 60%),
-                  var(--bg);
+      background:
+        radial-gradient(1000px 600px at 10% -10%, rgba(78,161,255,.18), transparent 55%),
+        radial-gradient(900px 600px at 90% 0%, rgba(124,240,195,.12), transparent 60%),
+        linear-gradient(180deg, rgba(255,255,255,.02), transparent 260px),
+        var(--bg);
       color:var(--text);
       line-height:1.55;
     }
     a{color:inherit; text-decoration:none}
+    img{max-width:100%; display:block}
+
     .wrap{max-width:var(--max); margin:0 auto; padding:0 var(--pad)}
+    .row{display:flex; align-items:center; justify-content:space-between; gap:14px}
+    .stack{display:flex; flex-direction:column; gap:10px}
+
+    /* Topbar */
     .topbar{
-      position:sticky; top:0; z-index:30;
-      backdrop-filter: blur(10px);
+      position:sticky; top:0; z-index:50;
       background: rgba(11,15,20,.72);
+      backdrop-filter: blur(10px);
       border-bottom:1px solid var(--line);
     }
     .topbar .inner{
-      display:flex; align-items:center; justify-content:space-between;
+      max-width:var(--max);
+      margin:0 auto;
       padding:14px var(--pad);
-      max-width:var(--max); margin:0 auto;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:14px;
     }
     .brand{
-      display:flex; align-items:center; gap:12px;
-      font-weight:700; letter-spacing:.2px;
+      display:flex;
+      align-items:center;
+      gap:12px;
+      min-width: 240px;
     }
     .logo{
-      width:34px; height:34px;
+      width:36px;height:36px;
       border:1px solid var(--line);
-      background: linear-gradient(135deg, rgba(78,161,255,.35), rgba(124,240,195,.18));
+      background: linear-gradient(135deg, rgba(78,161,255,.34), rgba(124,240,195,.14));
       box-shadow: var(--shadow);
     }
-    nav{display:flex; gap:16px; align-items:center}
+    .brandTitle{font-weight:800; letter-spacing:.2px; font-size:14px}
+    .brandSub{color:var(--muted); font-size:12px; margin-top:2px}
+
+    nav{
+      display:flex;
+      gap:10px;
+      align-items:center;
+      flex-wrap:wrap;
+      justify-content:center;
+    }
     nav a{
-      font-size:14px; color:var(--muted);
+      font-size:13px;
+      color:var(--muted);
       padding:8px 10px;
       border:1px solid transparent;
+      background:transparent;
     }
     nav a:hover{color:var(--text); border-color:var(--line); background:rgba(255,255,255,.03)}
-    .actions{display:flex; gap:10px; align-items:center}
+
+    .actions{display:flex; align-items:center; gap:10px}
     .btn{
       display:inline-flex; align-items:center; justify-content:center;
       gap:8px;
-      font-size:14px;
+      font-size:13px;
       padding:10px 12px;
       border:1px solid var(--line);
       background:rgba(255,255,255,.03);
       color:var(--text);
       cursor:pointer;
       user-select:none;
+      white-space:nowrap;
     }
     .btn:hover{border-color:rgba(255,255,255,.16); background:rgba(255,255,255,.05)}
     .btn.primary{
       border-color:rgba(78,161,255,.35);
-      background: linear-gradient(135deg, rgba(78,161,255,.22), rgba(124,240,195,.08));
+      background: linear-gradient(135deg, rgba(78,161,255,.20), rgba(124,240,195,.08));
     }
-    .hero{
-      padding:44px 0 28px;
-    }
+
+    /* Hero */
+    .hero{padding:44px 0 22px}
     .heroGrid{
       display:grid;
       grid-template-columns: 1.25fr .85fr;
-      gap:18px;
+      gap:14px;
       align-items:stretch;
     }
     .card{
@@ -94,94 +124,166 @@
     }
     .heroCard{padding:28px}
     .kicker{
-      display:inline-flex; gap:8px; align-items:center;
-      font-size:13px; color:var(--muted);
+      display:inline-flex;
+      gap:8px;
+      align-items:center;
+      font-size:12px;
+      color:var(--muted);
+      padding:7px 10px;
       border:1px solid var(--line);
-      padding:6px 10px;
-      background:rgba(255,255,255,.02);
-      margin-bottom:16px;
+      background: rgba(255,255,255,.02);
+      margin-bottom:14px;
     }
-    h1{margin:0 0 10px; font-size:38px; line-height:1.15; letter-spacing:.2px}
-    .sub{margin:0 0 18px; color:var(--muted); font-size:16px; max-width:62ch}
-    .heroBtns{display:flex; gap:10px; flex-wrap:wrap; margin-top:6px}
+    h1{
+      margin:0 0 10px;
+      font-size:38px;
+      line-height:1.12;
+      letter-spacing:.2px;
+    }
+    .sub{
+      margin:0;
+      color:var(--muted);
+      font-size:15px;
+      max-width: 70ch;
+    }
+    .heroBtns{display:flex; gap:10px; flex-wrap:wrap; margin-top:16px}
+    .divider{height:1px; background:var(--line); margin:18px 0}
+
     .stats{
       display:grid;
       grid-template-columns: 1fr 1fr;
       gap:12px;
-      padding:18px;
     }
     .stat{
-      padding:16px;
+      padding:14px;
       border:1px solid var(--line);
-      background:rgba(255,255,255,.02);
+      background: rgba(255,255,255,.02);
     }
-    .stat b{display:block; font-size:18px}
-    .stat span{display:block; font-size:13px; color:var(--muted); margin-top:6px}
+    .stat b{display:block; font-size:14px}
+    .stat span{display:block; font-size:12px; color:var(--muted); margin-top:6px}
+
+    /* Featured image */
+    .featured{padding:18px}
+    .featTitle{font-size:13px; color:var(--muted); margin-bottom:10px}
+    .media{
+      border:1px solid var(--line);
+      background: linear-gradient(135deg, rgba(255,255,255,.04), rgba(255,255,255,.015));
+      min-height:290px;
+      position:relative;
+      overflow:hidden;
+    }
+    .media img{width:100%; height:100%; object-fit:cover}
+    .media::after{
+      content:attr(data-label);
+      position:absolute;
+      left:12px; bottom:12px;
+      font-size:11px;
+      letter-spacing:2px;
+      color:rgba(233,238,245,.72);
+      border-top:1px solid var(--line);
+      padding-top:10px;
+      width:calc(100% - 24px);
+      background: linear-gradient(180deg, transparent, rgba(11,15,20,.35));
+    }
+
+    /* Sections */
     .section{padding:18px 0}
     .sectionHead{
-      display:flex; align-items:end; justify-content:space-between;
-      gap:14px; padding:0 0 10px;
+      display:flex;
+      align-items:flex-end;
+      justify-content:space-between;
+      gap:14px;
+      padding:0 0 10px;
       border-bottom:1px solid var(--line);
       margin-bottom:14px;
     }
-    .sectionHead h2{margin:0; font-size:18px; letter-spacing:.2px}
-    .sectionHead p{margin:0; color:var(--muted); font-size:13px}
+    .sectionHead h2{margin:0; font-size:16px; letter-spacing:.2px}
+    .sectionHead p{margin:0; color:var(--muted); font-size:12px}
+
     .grid3{
       display:grid;
       grid-template-columns: repeat(3, 1fr);
       gap:12px;
     }
     .item{padding:16px}
-    .item h3{margin:0 0 6px; font-size:15px}
-    .item p{margin:0; color:var(--muted); font-size:13px}
-    .divider{height:1px; background:var(--line); margin:18px 0}
+    .item h3{margin:0 0 6px; font-size:14px}
+    .item p{margin:0; color:var(--muted); font-size:12.5px}
+
+    /* Gallery */
     .gallery{
       display:grid;
       grid-template-columns: repeat(12, 1fr);
       gap:10px;
     }
-    .ph{
+    .tile{
       border:1px solid var(--line);
       background: linear-gradient(135deg, rgba(255,255,255,.04), rgba(255,255,255,.015));
       min-height:120px;
       position:relative;
       overflow:hidden;
     }
-    .ph::after{
-      content:"PHOTO";
-      position:absolute; inset:auto 10px 10px 10px;
-      font-size:12px; letter-spacing:2px;
-      color:rgba(233,238,245,.55);
+    .tile img{width:100%; height:100%; object-fit:cover}
+    .tile::after{
+      content:attr(data-caption);
+      position:absolute;
+      left:12px; right:12px; bottom:12px;
+      font-size:11px;
+      color:rgba(233,238,245,.72);
       border-top:1px solid var(--line);
       padding-top:10px;
+      background: linear-gradient(180deg, transparent, rgba(11,15,20,.35));
     }
-    .ph.big{grid-column: span 6; min-height:260px}
-    .ph.mid{grid-column: span 3}
-    .ph.sm{grid-column: span 3}
+    .tile.big{grid-column: span 6; min-height:260px}
+    .tile.mid{grid-column: span 3}
+    .tile.sm{grid-column: span 3}
+
+    /* Contact card */
+    .contactGrid{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:12px;
+    }
+    .hint{
+      font-size:12px;
+      color:var(--muted);
+    }
+    .pill{
+      display:inline-flex;
+      gap:8px;
+      align-items:center;
+      padding:8px 10px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.02);
+      font-size:12px;
+      color:var(--muted);
+    }
+
     footer{
-      padding:28px 0 40px;
+      padding:26px 0 40px;
       border-top:1px solid var(--line);
       color:var(--muted);
-      font-size:13px;
+      font-size:12px;
       margin-top:26px;
     }
 
-    /* responsive */
-    @media (max-width: 940px){
+    /* Language blocks */
+    .langBlock{display:none}
+    .langBlock.active{display:block}
+
+    /* Responsive */
+    @media (max-width: 980px){
       .heroGrid{grid-template-columns: 1fr}
       h1{font-size:34px}
       .grid3{grid-template-columns: 1fr}
-      .ph.big{grid-column: span 12}
-      .ph.mid,.ph.sm{grid-column: span 6}
-    }
-    @media (max-width: 520px){
-      .ph.mid,.ph.sm{grid-column: span 12}
+      .tile.big{grid-column: span 12}
+      .tile.mid,.tile.sm{grid-column: span 6}
+      .contactGrid{grid-template-columns: 1fr}
       nav{display:none}
     }
-
-    /* language blocks */
-    .lang{display:none}
-    .lang.active{display:block}
+    @media (max-width: 520px){
+      .tile.mid,.tile.sm{grid-column: span 12}
+      .brand{min-width:auto}
+    }
   </style>
 </head>
 
@@ -191,8 +293,8 @@
       <div class="brand">
         <div class="logo" aria-hidden="true"></div>
         <div>
-          <div style="font-size:14px">Giàn giáo Hà Minh-IPC</div>
-          <div style="font-size:12px; color:var(--muted)">Ringlock Scaffold Leasing • HSS</div>
+          <div class="brandTitle">Giàn giáo Hà Minh-IPC</div>
+          <div class="brandSub">Ringlock Scaffold Leasing • Galvanized HSS</div>
         </div>
       </div>
 
@@ -204,7 +306,7 @@
       </nav>
 
       <div class="actions">
-        <button class="btn" id="langBtn" type="button" title="VN / EN">VN</button>
+        <button class="btn" id="langBtn" type="button" title="Toggle VN/EN">VN</button>
         <a class="btn primary" href="#contact" data-i18n="cta">Yêu cầu báo giá</a>
       </div>
     </div>
@@ -212,27 +314,33 @@
 
   <main class="wrap">
     <!-- HERO -->
-    <section class="hero">
+    <section class="hero" id="top">
       <div class="heroGrid">
         <div class="card heroCard">
           <div class="kicker">
             <span>●</span>
-            <span data-i18n="kicker">Kho bãi lớn • Quy trình rõ ràng • Thi công thực tế</span>
+            <span data-i18n="kicker">Kho bãi lớn • Quy trình rõ ràng • Dự án thực tế</span>
           </div>
 
-          <div class="lang lang-vi active" id="vi">
+          <div class="langBlock active" id="lang-vi">
             <h1>Cho thuê giàn giáo Ringlock & thép hộp mạ kẽm</h1>
-            <p class="sub">Giàn giáo Hà Minh-IPC cung cấp giải pháp giàn giáo cho nhà xưởng, công trình dân dụng & công nghiệp: đủ vật tư, giao hàng nhanh, kiểm soát chất lượng đầu vào/ra kho.</p>
+            <p class="sub">
+              Giàn giáo Hà Minh-IPC cung cấp vật tư giàn giáo cho nhà xưởng, công trình dân dụng & công nghiệp.
+              Tập trung: kho bãi, kiểm kê rõ ràng, giao/thu linh hoạt theo tiến độ.
+            </p>
           </div>
 
-          <div class="lang lang-en" id="en">
+          <div class="langBlock" id="lang-en">
             <h1>Ringlock scaffolding & galvanized HSS rental</h1>
-            <p class="sub">Hà Minh-IPC provides scaffolding solutions for industrial and civil projects: ready stock, fast delivery, and clear warehouse in/out quality control.</p>
+            <p class="sub">
+              Hà Minh-IPC supplies scaffolding for industrial and civil projects with clear inventory control and flexible delivery/collection by schedule.
+            </p>
           </div>
 
           <div class="heroBtns">
-            <a class="btn primary" href="#projects" data-i18n="btnSeeProjects">Xem công trình đã dùng</a>
-            <a class="btn" href="#services" data-i18n="btnSeeStock">Xem vật tư cho thuê</a>
+            <a class="btn primary" href="#projects" data-i18n="btnSeeProjects">Xem dự án</a>
+            <a class="btn" href="#services" data-i18n="btnSeeStock">Xem vật tư</a>
+            <a class="btn" href="#operations" data-i18n="btnSeeOps">Xem vận hành</a>
           </div>
 
           <div class="divider"></div>
@@ -243,12 +351,12 @@
               <span data-i18n="stat1sub">Theo mã hàng, theo khu, theo lô</span>
             </div>
             <div class="stat">
-              <b data-i18n="stat2">Giao hàng linh hoạt</b>
+              <b data-i18n="stat2">Giao / thu linh hoạt</b>
               <span data-i18n="stat2sub">Theo tiến độ thi công</span>
             </div>
             <div class="stat">
-              <b data-i18n="stat3">Tiêu chuẩn Ringlock</b>
-              <span data-i18n="stat3sub">Đồng bộ quy cách, dễ lắp</span>
+              <b data-i18n="stat3">Đồng bộ Ringlock</b>
+              <span data-i18n="stat3sub">Dễ lắp, dễ kiểm kê</span>
             </div>
             <div class="stat">
               <b data-i18n="stat4">An toàn & ổn định</b>
@@ -257,15 +365,20 @@
           </div>
         </div>
 
-        <div class="card">
-          <div style="padding:18px">
-            <div style="font-size:14px; margin-bottom:10px" data-i18n="rightTitle">Ảnh nổi bật</div>
-            <div style="color:var(--muted); font-size:13px" data-i18n="rightSub">
-              Tạm thời dùng khung PHOTO. Bước tiếp theo bạn chỉ cần upload ảnh vào /assets/images và thay link.
-            </div>
+        <div class="card featured">
+          <div class="featTitle" data-i18n="featTitle">Ảnh nổi bật</div>
+
+          <!-- Replace this placeholder later by uploading an image and setting src:
+               Example: <img src="assets/images/featured.jpg" alt="...">
+          -->
+          <div class="media" data-label="FEATURED">
+            <!-- Placeholder only. Uncomment when you have an image:
+            <img src="assets/images/featured.jpg" alt="Giàn giáo Hà Minh-IPC" />
+            -->
           </div>
-          <div style="padding:0 18px 18px">
-            <div class="ph" style="min-height:260px; border:1px solid var(--line)"></div>
+
+          <div style="margin-top:12px" class="hint" data-i18n="featHint">
+            Bước sau: upload ảnh vào <b>assets/images/</b> rồi thay link <b>src</b>.
           </div>
         </div>
       </div>
@@ -276,9 +389,9 @@
       <div class="sectionHead">
         <div>
           <h2 data-i18n="svcTitle">Sản phẩm cho thuê</h2>
-          <p data-i18n="svcSub">Ringlock • Thép hộp mạ kẽm (HSS) • Phụ kiện</p>
+          <p data-i18n="svcSub">Ringlock • HSS • Phụ kiện</p>
         </div>
-        <p data-i18n="svcNote">*Danh mục chi tiết sẽ thêm ở bước sau</p>
+        <p data-i18n="svcNote">*Có thể thêm bảng quy cách sau</p>
       </div>
 
       <div class="grid3">
@@ -287,7 +400,7 @@
           <p data-i18n="svc1p">Giáo đứng, giằng ngang/chéo, kích U/kích chân, dầm… đồng bộ, dễ kiểm kê.</p>
         </div>
         <div class="card item">
-          <h3 data-i18n="svc2">Thép hộp mạ kẽm</h3>
+          <h3 data-i18n="svc2">Thép hộp mạ kẽm (HSS)</h3>
           <p data-i18n="svc2p">HSS 50×50, 50×100… phục vụ giằng, chống, khung phụ trợ theo mặt bằng.</p>
         </div>
         <div class="card item">
@@ -302,19 +415,19 @@
       <div class="sectionHead">
         <div>
           <h2 data-i18n="opsTitle">Vận hành & kho bãi</h2>
-          <p data-i18n="opsSub">Quy trình, an toàn, quản lý vật tư</p>
+          <p data-i18n="opsSub">Quy trình - an toàn - kiểm kê</p>
         </div>
-        <p data-i18n="opsNote">*Bạn có thể thay nội dung theo thực tế</p>
+        <p data-i18n="opsNote">*Thay theo thực tế</p>
       </div>
 
       <div class="grid3">
         <div class="card item">
-          <h3 data-i18n="ops1">1) Tiếp nhận & kiểm kê</h3>
-          <p data-i18n="ops1p">Phân loại theo mã hàng / quy cách / khu vực lưu trữ.</p>
+          <h3 data-i18n="ops1">1) Tiếp nhận & phân loại</h3>
+          <p data-i18n="ops1p">Sắp xếp theo mã hàng / quy cách / khu lưu trữ để quản lý nhanh.</p>
         </div>
         <div class="card item">
           <h3 data-i18n="ops2">2) Xuất kho theo lệnh</h3>
-          <p data-i18n="ops2p">Đóng kiện, bàn giao, đối chiếu số lượng rõ ràng.</p>
+          <p data-i18n="ops2p">Đóng kiện, bàn giao, đối chiếu số lượng rõ ràng trước khi rời kho.</p>
         </div>
         <div class="card item">
           <h3 data-i18n="ops3">3) Thu hồi & bảo dưỡng</h3>
@@ -328,18 +441,35 @@
       <div class="sectionHead">
         <div>
           <h2 data-i18n="prjTitle">Công trình đã sử dụng</h2>
-          <p data-i18n="prjSub">Hình ảnh thực tế (gallery)</p>
+          <p data-i18n="prjSub">Gallery ảnh thực tế</p>
         </div>
-        <p data-i18n="prjNote">*Bước sau: thay PHOTO bằng ảnh thật</p>
+        <p data-i18n="prjNote">*Upload ảnh rồi thay src</p>
       </div>
 
       <div class="gallery">
-        <div class="ph big"></div>
-        <div class="ph big"></div>
-        <div class="ph mid"></div>
-        <div class="ph mid"></div>
-        <div class="ph mid"></div>
-        <div class="ph mid"></div>
+        <div class="tile big" data-caption="PROJECT 01">
+          <!-- <img src="assets/images/project-01.jpg" alt="Project 01" /> -->
+        </div>
+        <div class="tile big" data-caption="PROJECT 02">
+          <!-- <img src="assets/images/project-02.jpg" alt="Project 02" /> -->
+        </div>
+        <div class="tile mid" data-caption="PROJECT 03">
+          <!-- <img src="assets/images/project-03.jpg" alt="Project 03" /> -->
+        </div>
+        <div class="tile mid" data-caption="PROJECT 04">
+          <!-- <img src="assets/images/project-04.jpg" alt="Project 04" /> -->
+        </div>
+        <div class="tile mid" data-caption="PROJECT 05">
+          <!-- <img src="assets/images/project-05.jpg" alt="Project 05" /> -->
+        </div>
+        <div class="tile mid" data-caption="PROJECT 06">
+          <!-- <img src="assets/images/project-06.jpg" alt="Project 06" /> -->
+        </div>
+      </div>
+
+      <div style="margin-top:12px" class="hint">
+        <span class="pill" data-i18n="prjHint1">Tip: đặt tên ảnh theo project-01.jpg, project-02.jpg…</span>
+        <span class="pill" data-i18n="prjHint2">Bạn có thể đổi caption thành “Bắc Ninh”, “Hải Dương”…</span>
       </div>
     </section>
 
@@ -348,14 +478,25 @@
       <div class="sectionHead">
         <div>
           <h2 data-i18n="ctTitle">Liên hệ</h2>
-          <p data-i18n="ctSub">Bổ sung số điện thoại / Zalo / địa chỉ sau</p>
+          <p data-i18n="ctSub">Tạm thời để trống theo yêu cầu</p>
         </div>
-        <p data-i18n="ctNote">*Hiện đang để trống theo yêu cầu</p>
+        <p data-i18n="ctNote">*Sẽ thêm nút gọi/Zalo/Maps sau</p>
       </div>
 
-      <div class="card item">
-        <h3 data-i18n="ctHow">Cách nhanh nhất</h3>
-        <p data-i18n="ctHowP">Khi bạn sẵn sàng, mình sẽ thêm nút gọi điện, Zalo, và link Google Maps. Hiện tại trang đã chạy ổn định trên GitHub Pages.</p>
+      <div class="contactGrid">
+        <div class="card item">
+          <h3 data-i18n="ct1">Thông tin cơ bản</h3>
+          <p data-i18n="ct1p">Khi bạn sẵn sàng, mình sẽ thêm: số điện thoại, Zalo, địa chỉ kho bãi và link Google Maps.</p>
+          <div class="divider"></div>
+          <div class="hint" data-i18n="ct1hint">Hiện tại website đã chạy ổn định trên GitHub Pages.</div>
+        </div>
+
+        <div class="card item">
+          <h3 data-i18n="ct2">Báo giá nhanh</h3>
+          <p data-i18n="ct2p">Sau này mình có thể gắn form (Google Form) để khách gửi yêu cầu báo giá miễn phí.</p>
+          <div class="divider"></div>
+          <div class="hint" data-i18n="ct2hint">Không cần server, vẫn chạy free.</div>
+        </div>
       </div>
     </section>
 
@@ -368,77 +509,90 @@
   </main>
 
   <script>
+    // --- i18n dictionary ---
     const dict = {
       vi: {
         navServices:"Sản phẩm", navOps:"Vận hành", navProjects:"Dự án", navContact:"Liên hệ",
         cta:"Yêu cầu báo giá",
-        kicker:"Kho bãi lớn • Quy trình rõ ràng • Thi công thực tế",
-        btnSeeProjects:"Xem công trình đã dùng", btnSeeStock:"Xem vật tư cho thuê",
+        kicker:"Kho bãi lớn • Quy trình rõ ràng • Dự án thực tế",
+        btnSeeProjects:"Xem dự án", btnSeeStock:"Xem vật tư", btnSeeOps:"Xem vận hành",
         stat1:"Kho bãi & quản lý vật tư", stat1sub:"Theo mã hàng, theo khu, theo lô",
-        stat2:"Giao hàng linh hoạt", stat2sub:"Theo tiến độ thi công",
-        stat3:"Tiêu chuẩn Ringlock", stat3sub:"Đồng bộ quy cách, dễ lắp",
+        stat2:"Giao / thu linh hoạt", stat2sub:"Theo tiến độ thi công",
+        stat3:"Đồng bộ Ringlock", stat3sub:"Dễ lắp, dễ kiểm kê",
         stat4:"An toàn & ổn định", stat4sub:"Ưu tiên phương án tối ưu kết cấu",
-        rightTitle:"Ảnh nổi bật",
-        rightSub:"Tạm thời dùng khung PHOTO. Bước tiếp theo bạn chỉ cần upload ảnh vào /assets/images và thay link.",
-        svcTitle:"Sản phẩm cho thuê", svcSub:"Ringlock • Thép hộp mạ kẽm (HSS) • Phụ kiện", svcNote:"*Danh mục chi tiết sẽ thêm ở bước sau",
+        featTitle:"Ảnh nổi bật",
+        featHint:"Bước sau: upload ảnh vào assets/images/ rồi thay link src.",
+        svcTitle:"Sản phẩm cho thuê", svcSub:"Ringlock • HSS • Phụ kiện", svcNote:"*Có thể thêm bảng quy cách sau",
         svc1:"Giàn giáo Ringlock", svc1p:"Giáo đứng, giằng ngang/chéo, kích U/kích chân, dầm… đồng bộ, dễ kiểm kê.",
-        svc2:"Thép hộp mạ kẽm", svc2p:"HSS 50×50, 50×100… phục vụ giằng, chống, khung phụ trợ theo mặt bằng.",
+        svc2:"Thép hộp mạ kẽm (HSS)", svc2p:"HSS 50×50, 50×100… phục vụ giằng, chống, khung phụ trợ theo mặt bằng.",
         svc3:"Logistics & vận hành", svc3p:"Giao/thu theo tiến độ. Quy trình xuất/nhập kho rõ ràng, hạn chế thất thoát.",
-        opsTitle:"Vận hành & kho bãi", opsSub:"Quy trình, an toàn, quản lý vật tư", opsNote:"*Bạn có thể thay nội dung theo thực tế",
-        ops1:"1) Tiếp nhận & kiểm kê", ops1p:"Phân loại theo mã hàng / quy cách / khu vực lưu trữ.",
-        ops2:"2) Xuất kho theo lệnh", ops2p:"Đóng kiện, bàn giao, đối chiếu số lượng rõ ràng.",
+        opsTitle:"Vận hành & kho bãi", opsSub:"Quy trình - an toàn - kiểm kê", opsNote:"*Thay theo thực tế",
+        ops1:"1) Tiếp nhận & phân loại", ops1p:"Sắp xếp theo mã hàng / quy cách / khu lưu trữ để quản lý nhanh.",
+        ops2:"2) Xuất kho theo lệnh", ops2p:"Đóng kiện, bàn giao, đối chiếu số lượng rõ ràng trước khi rời kho.",
         ops3:"3) Thu hồi & bảo dưỡng", ops3p:"Kiểm tra, làm sạch, sửa chữa cơ bản trước khi nhập lại kho.",
-        prjTitle:"Công trình đã sử dụng", prjSub:"Hình ảnh thực tế (gallery)", prjNote:"*Bước sau: thay PHOTO bằng ảnh thật",
-        ctTitle:"Liên hệ", ctSub:"Bổ sung số điện thoại / Zalo / địa chỉ sau", ctNote:"*Hiện đang để trống theo yêu cầu",
-        ctHow:"Cách nhanh nhất", ctHowP:"Khi bạn sẵn sàng, mình sẽ thêm nút gọi điện, Zalo, và link Google Maps. Hiện tại trang đã chạy ổn định trên GitHub Pages."
+        prjTitle:"Công trình đã sử dụng", prjSub:"Gallery ảnh thực tế", prjNote:"*Upload ảnh rồi thay src",
+        prjHint1:"Tip: đặt tên ảnh theo project-01.jpg, project-02.jpg…",
+        prjHint2:"Bạn có thể đổi caption thành “Bắc Ninh”, “Hải Dương”…",
+        ctTitle:"Liên hệ", ctSub:"Tạm thời để trống theo yêu cầu", ctNote:"*Sẽ thêm nút gọi/Zalo/Maps sau",
+        ct1:"Thông tin cơ bản", ct1p:"Khi bạn sẵn sàng, mình sẽ thêm: số điện thoại, Zalo, địa chỉ kho bãi và link Google Maps.",
+        ct1hint:"Hiện tại website đã chạy ổn định trên GitHub Pages.",
+        ct2:"Báo giá nhanh", ct2p:"Sau này mình có thể gắn form (Google Form) để khách gửi yêu cầu báo giá miễn phí.",
+        ct2hint:"Không cần server, vẫn chạy free."
       },
       en: {
         navServices:"Services", navOps:"Operations", navProjects:"Projects", navContact:"Contact",
         cta:"Request a quote",
         kicker:"Large yard • Clear process • Real projects",
-        btnSeeProjects:"See projects", btnSeeStock:"See inventory",
+        btnSeeProjects:"View projects", btnSeeStock:"View inventory", btnSeeOps:"View operations",
         stat1:"Yard & inventory control", stat1sub:"By item code, zone, batch",
-        stat2:"Flexible delivery", stat2sub:"Following project schedule",
-        stat3:"Ringlock standard", stat3sub:"Consistent specs, easy assembly",
+        stat2:"Flexible delivery/collection", stat2sub:"Following project schedule",
+        stat3:"Ringlock standard", stat3sub:"Consistent specs, easy counting",
         stat4:"Safety & stability", stat4sub:"Optimized structural approach",
-        rightTitle:"Featured photo",
-        rightSub:"Placeholder PHOTO frames for now. Next step: upload images to /assets/images and replace links.",
-        svcTitle:"Rental inventory", svcSub:"Ringlock • Galvanized HSS • Accessories", svcNote:"*Detailed catalog will be added later",
+        featTitle:"Featured photo",
+        featHint:"Next step: upload images to assets/images/ and replace the src links.",
+        svcTitle:"Rental inventory", svcSub:"Ringlock • HSS • Accessories", svcNote:"*Detailed catalog can be added later",
         svc1:"Ringlock scaffolding", svc1p:"Standards, ledgers/diagonals, screw jacks, beams… consistent and easy to count.",
-        svc2:"Galvanized HSS", svc2p:"HSS 50×50, 50×100… used for bracing, supports, and auxiliary frames.",
+        svc2:"Galvanized HSS", svc2p:"HSS 50×50, 50×100… for bracing, supports, auxiliary frames.",
         svc3:"Logistics & operations", svc3p:"Deliver/collect by schedule. Clear in/out process to reduce loss.",
-        opsTitle:"Operations & yard", opsSub:"Process, safety, inventory management", opsNote:"*Replace with your real workflow anytime",
-        ops1:"1) Receiving & counting", ops1p:"Sort by item code / spec / storage zone.",
-        ops2:"2) Dispatch by order", ops2p:"Bundle, handover, and cross-check quantities clearly.",
+        opsTitle:"Operations & yard", opsSub:"Process - safety - inventory", opsNote:"*Replace with your real workflow",
+        ops1:"1) Receiving & sorting", ops1p:"Organize by item code / spec / storage zone for fast control.",
+        ops2:"2) Dispatch by order", ops2p:"Bundle, handover, and cross-check quantities before leaving the yard.",
         ops3:"3) Return & maintenance", ops3p:"Inspect, clean, basic repairs before returning to stock.",
-        prjTitle:"Projects using our scaffolds", prjSub:"Real photos (gallery)", prjNote:"*Next: replace PHOTO with your images",
-        ctTitle:"Contact", ctSub:"Add phone / Zalo / address later", ctNote:"*Left blank as requested",
-        ctHow:"Fastest way", ctHowP:"When you're ready, we’ll add Call/Zalo buttons and Google Maps link. The site is already running smoothly on GitHub Pages."
+        prjTitle:"Projects using our scaffolds", prjSub:"Real photo gallery", prjNote:"*Upload images then set src",
+        prjHint1:"Tip: name photos project-01.jpg, project-02.jpg…",
+        prjHint2:"You can change captions to provinces or project names.",
+        ctTitle:"Contact", ctSub:"Left blank for now (as requested)", ctNote:"*We’ll add Call/Zalo/Maps later",
+        ct1:"Basic info", ct1p:"When you're ready, we’ll add phone, Zalo, yard address, and a Google Maps link.",
+        ct1hint:"The website is already running smoothly on GitHub Pages.",
+        ct2:"Quick quotation", ct2p:"Later we can embed a free Google Form for quote requests.",
+        ct2hint:"No server needed, still free."
       }
     };
 
     const langBtn = document.getElementById('langBtn');
+    const viBlock = document.getElementById('lang-vi');
+    const enBlock = document.getElementById('lang-en');
     let current = 'vi';
 
     function applyLang(lang){
       current = lang;
-      // toggle blocks
-      document.getElementById('vi').classList.toggle('active', lang === 'vi');
-      document.getElementById('en').classList.toggle('active', lang === 'en');
+      if (viBlock) viBlock.classList.toggle('active', lang === 'vi');
+      if (enBlock) enBlock.classList.toggle('active', lang === 'en');
 
-      // apply text
       document.querySelectorAll('[data-i18n]').forEach(el=>{
         const key = el.getAttribute('data-i18n');
         if (dict[lang] && dict[lang][key]) el.textContent = dict[lang][key];
       });
 
-      langBtn.textContent = (lang === 'vi') ? 'VN' : 'EN';
+      if (langBtn) langBtn.textContent = (lang === 'vi') ? 'VN' : 'EN';
       document.documentElement.lang = (lang === 'vi') ? 'vi' : 'en';
     }
 
-    langBtn.addEventListener('click', ()=>{
-      applyLang(current === 'vi' ? 'en' : 'vi');
-    });
+    if (langBtn){
+      langBtn.addEventListener('click', () => {
+        applyLang(current === 'vi' ? 'en' : 'vi');
+      });
+    }
 
     document.getElementById('year').textContent = new Date().getFullYear();
     applyLang('vi');
